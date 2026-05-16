@@ -1,0 +1,53 @@
+Backup in linux 
+	tar  ->  Backup  			( *.tar)
+	tar  -> Shrink/Compressed  	(*.tar.gz)
+
+ c  create
+ p  preserve the bits 
+ f  file
+ z  zip/ shrink 
+ 
+du -hs  /etc/
+
+tar cpf   backup-etc-1652026.tar  /etc/
+
+ls -ltr 
+
+du -hs   backup-etc-1652026.tar
+ 
+Now shrink data with tar.gz  extension: 
+========================================== 
+tar  cpfz  backup-shrink-etc-1652026.tar.gz --exclude=yum*  /etc/
+
+du -hs *
+
+How to extract any tar  /  tar.gz 
+
+	tar xfh  Filename.tar
+			OR
+	tar xfh  Filename.tar.gz
+	
+			OR
+	tar xfh  Filename.tar.gz  -C  /opt/
+	
+	ls -ltr /opt/
+	
+	du -hs  /opt/
+	
+	ls -ltr /opt/etc/   |   grep  yum 
+			
+	
+	
+	
+	
+---------------------------------
+Get the size of Dir / File in linux ?
+
+	du  -hs  <Dirname / Filename> 
+					*
+	du  ->  Disk usages 
+		-h Human readable 
+		-s size in mb / gb /tb 
+		
+		
+			
