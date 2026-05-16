@@ -1,0 +1,82 @@
+Shell Types :
+
+	1)  C  Shell
+	
+			*.csh			/bin/csh 
+			
+	2)  TC Shell 
+	
+			*tcsh			/bin/tcsh
+			
+	3)  Korne Shell ( python, perl, ruby, c,c++)
+				
+			*.ksh			/bin/ksh
+			
+	4)  Bourne Shell (c,c++)  (SH)			/bin/sh
+		
+			*.sh	
+			
+	5)  Boune Again Shell (BASH) (py, ruby)
+
+			*.sh 				/bin/bash 
+		
+rm  =>  remove ( File +  Dir )
+		
+			-r recursive mode 
+			-f forcefully mode 
+			-i  intractive mode 
+			
+			
+cp  =  Copy = file + dir
+		-r  recursive
+		-d   directory
+		-v  verbose (Show off)
+	Syntax:
+				cp   Source(s)   Destination
+
+
+rm 	=  file +  dir   
+			-rf
+			-ir
+			-i
+mv  = move + rename 
+	Syntax:
+	
+			mv  source  destination 
+		
+	Move (File / Dir) : Source and Destination are diff.
+	
+			mv  /root/xyz.txt   /opt/
+			
+	Rename (File / Dir): Source and Destination are same 
+
+			mv  /root/xyz.txt   /root/abcd.txt 
+			
+			mv  pqrs.php  abcd.txt  
+==============================================			
+ps
+
+top
+
+kill
+
+ssh IP
+  
+==============================================
+CPu Scheduling algo
+	
+	- Round Robin
+	- FIFO
+	- LIFO
+	- FCFS
+
+
+
+Linux Shell Script 
+
+==========
+
+
+
+rm  ==>  remove  ( File +  Dir )
+
