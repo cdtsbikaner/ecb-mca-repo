@@ -1,0 +1,257 @@
+File System: A location where Dir + File save and arrange in manner for available three certain operation READ(r) , WRITE (w), EXECUTE (x)
+
+All file systems mount under the location which is known as MAIN file system (/).
+
+ls 
+-------------------------------------------------------------------
+	.		->  Current File System
+	..		->  Previous File System 
+	/		-> ROOT (main) File System 
+	
+	/root	-> super root user home directory 
+	/home	-> Local user of linux o.s.
+	
+	/boot
+	/mnt
+	......
+	......
+	......
+---------------------------------------------------------
+		RSA  	vs	 	ED25519 
+--------------------------------------------------------
+Yesterday Commands (23.11.24)
+id
+whoami
+date
+cal
+cal  1 2025
+pwd
+man
+useradd
+passwd
+w
+who
+ps 
+	ps aux
+	ps -elf 
+less
+	ps aux  |  less
+
+top
+
+init 0  -> halt / shutdown   (shutdown -r)
+------------------------------
+Today commands (24.11.24)
+------------------------------
+hostname
+
+
+	FQDN Fully Qulified Domain name ( HOST NAME )	[ 	worker1.tg.com , worker2.tg.com  ]
+	
+	DN	Domain Name [  tg.com  ]
+
+Hint:  Linux ( BIND Software DNS setup )  AWS Route53 / CloudFlair  
+	
+a) hostnamectl  set-hostname 
+Ex: 	
+	hostnamectl set-hostname worker1.tg.com
+Note:  To effective this new hostname you can logout then login 
+					OR
+			bash
+b)  vi /etc/hosts
+
+date 
+
+timedatectl list-timezones
+timedatectl set-timezone 'Asia/Kolkata'
+
+mkdir  
+		Ex:
+				mkdir world
+				ls 
+				cd world
+				mkdir India
+				ls 
+				cd India
+				mkdir  Rajasthan
+				ls 
+				cd Rajasthan
+
+
+cd 
+
+pwd
+
+mkdir  -p  Universe/World/India/Uttrakhand/TG/Devops/mahindra
+ 
+ls -ltr 
+
+cd Universe/World/India/Uttrakhand/TG/Devops/mahindra
+
+pwd
+
+---------------------------------------------------------
+
+cd  
+	.		->  Current File System
+	..		->  Previous File System 
+
+	cd  .
+	cd 	..
+	cd 		-> Jump into home directory of loinged user
+	cd  -   ->  Jump to just previous location (UNDO)
+
+
+ls 
+	ls -l		(Long listing File + Dir )
+	ls -ltr		(long listing with time sort)
+	ls -ld		( Long list of specific directory)
+	ls -la		( Long list of hidden dir / file )		
+	
+	in linux hidden file / dir represent by  Dot (.) operator 
+
+
+File Create:
+
+	touch 	( Zero byte size of file can create / Empty File )
+	
+	cat 	
+			>  STD OUT Operator
+			<  STD IN operator
+			>> HereDoc Append Operator 
+	Ex:
+			cat  >  mydata.txt
+				dvbkndkvndkvb
+				dbdkjbndjkbndknb
+				svlkdnbdnb
+				
+			ctrl d 
+			
+	ls -ltr 
+--------------------------------------------------	
+	echo 
+	Ex:  	(Create and insert data in new file)
+	
+			echo "Welcome To TG"   >  myimpinfo.txt
+				
+			(Append in existing file)	
+				
+			echo "Hello world how are you"  >>  myimpinfo.txt
+
+	vi  / vim 
+	
+insert:   press i
+
+Exit without save:  ESC  :q!
+
+save and exit:     
+				ESC  :wq!
+					OR
+				ESC    Left Shift  ZZ
+
+undo: 		Esc   u
+
+redo:		Esc  ctrl  r
+
+cut / delete :      Esc  dd   
+						OR
+					Esc  Ndd
+Copy:   Esc  yy  
+		   or 
+		Esc  Nyy
+		
+paste :   Esc  p
+--------------------------------------------
+Show conteent of the file :
+
+	cat  
+	
+ls -ltr 
+---------------------------------------------
+cp 	(Copy)  [  File / Dir  ]
+	
+	-v		verbose	 
+	-r		recursive 
+	-d		directory
+	
+	cp  SOURCE  DESTINATION
+	
+Ex:
+
+cp  -v  myinfo.txt /tmp/
+ls -ltr  /tmp/
+
+cp -rdv  Universe  /tmp/
+ls -ltr  /tmp/
+
+----------------------------------------------
+Before remove anything in system take prior permission/ approval then remove and take backup before manually.
+
+pwd
+
+cp  -rd *  /mnt/
+
+ls -ltr  /mnt
+----------------------------------------
+rm (Remove)	 [  File / Dir  ]
+	
+	-i intractive 
+
+			rm -i  tg-training.txt
+
+	-f forcefully
+	
+			 rm -f my*
+
+	-r recursive  (Dir and its contents)
+		
+			 rm -rf  *
+
+
+mv (move + Rename)	[  File / Dir  ]
+   	
+	File / dir source and Destination location is same  RENAME 
+
+		Ex:  mv /root/tg-training.txt   /root/newtrg.txt
+
+
+
+	File / dir source and Destination location is Differnt  MOVE 
+		
+		Ex:   mv /root/newtrg.txt    /media/
+
+--------------------------------------------
+Find :  
+			-name , iname , -perm, -mtime,  -size 
+			
+		 find  /  -name  *.html 
+		 
+		 Count files:
+		 
+				 find  /  -name  *.html  | wc -l
+
+
+find from specific location and paste under a given path :
+
+	Q:  Copy all *.html files of nano editor (Manual) and paste under  /home/tg
+	
+	Ans :  
+			find /usr/share/doc/nano-2.9.8/  -name  '*.html'  -exec cp "{}"  /home/tg \;
+----------------------------------------------------------------------------------------------
+
+Next class : 
+		permission in linux 
+		Group in linux
+		chmod
+		chown
+		chgrp
+		usermod
+		userdel
+		shell script 
+		rpm and dnf / yum 
+--------------------------------
+
+	
+
+	
+	
