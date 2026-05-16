@@ -231,3 +231,20 @@ Shell Script => repeatative task.
 CMT ( Config. mgmt tools ) => Ansible , Puppt , Chef 
 
 provisioning  =>  Teraform   
+
+Shell Script:
+
+	var define  ($)
+	console input / user keyboard input 
+	function
+	loop  -> for / while
+	switch case 
+	if then else 
+	
+	cp, mv,rm , chmod, pwd, id, date, cal , whoami, ifconfig
+	>
+	<
+	>>
+	cat
+	echo 
+---------------------------
