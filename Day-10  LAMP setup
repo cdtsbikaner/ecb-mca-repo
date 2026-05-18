@@ -1,0 +1,150 @@
+Basic Linux Essentials 
+
+tar
+chmod chgrp chown
+=======================
+File System:    
+				FS is type of container , where dir / files are arranged in manner / fashion available for certain 3 operations
+						read
+						write
+						execute
+					for three types of users in OS
+						User (owner)
+						Group
+						Others
+Types of file system in Linux and Windows:  
+					
+					NTFS ( New Technology File System) W
+					Ext 4/3/2 Extended file system  L / U
+					XFS ( Entensible file system)  L /U
+					FAT (File Allocation Table)
+						
+Linux File System: 
+
+		EXT 4/3/2  
+		XFS
+		FAT
+		Swap
+		
+
+
+
+
+=======================
+cronjob  (  Task Scheduling )
+==============================
+	View
+			crontab -l
+			
+			cat  /etc/crontab
+			
+	How to apply crontjobs
+	
+			crontab -e        ( Root)
+			
+	If I am root user and want to set crontjob for specific user cdts :
+		
+			crontab -u cdts  -e 
+			
+	Either we can find / view if any crontab written for local user cdts
+		
+			crontab -u cdts  -l
+
+We can perform several taks like as :
+
+	-  Web server start / stop
+	-  Databse restart / reload / stop / start
+	-  Backup ( tar )
+	-  incremental backup  ( Data Center) 
+
+If we want to install any pakage i.e. k/as  package in linux( Redhat type) use  :
+					dnf ( New Linux )
+					
+					yum ( Old Linux )
+					
+					
+Ubuntu :
+					apt install  httpd -y 
+
+php & mysql
+============
+
+			Apache webserve -->  80 / 443
+			Php =>  Server Side scripting 
+			 
+			
+			MySQL / Mariadb -->   3306 
+			
+	Step-1)   dnf  info httpd  
+
+	Step-2)    dnf info mariadb-server
+	
+	Step-3)  dnf install httpd  -y
+	
+	Step-4 )  dnf install mariadb-server   mariadb   -y 
+			
+	Step-5) start the services of apache webserver and mysql 
+			
+			systemctl start httpd
+			
+			systemctl enable httpd
+	
+
+	
+			Now test :    http://192.168.0.135/
+
+			systemctl start mariadb
+			
+			systemctl  enable mariadb 
+
+
+	Step-6) 
+	dnf install php php-cli  php-fpm  php-mbstring php-common php-mysqlnd -y 
+	
+	
+	Step-7)  cd /var/www/html
+	
+			echo "hello"  > index.html 
+			
+			
+	Note : Cross check on browser 
+		
+------------------------------------------------------	
+
+											OS 
+	Server Side Scripting  -->  Web server / Application execute
+									( php / ASp / JSp/ Py / Ruby/Perl)
+											|
+											|
+											|
+											|
+										HTML / CSS  / JS 
+									( Client Side = browser)		
+									
+	web-server = http (80) / https (443) ( OSI layer App layer)
+	
+	application server = Tomcat apache ( 8080 ) / ERP 
+	
+	
+	
+A	application 
+P	presentation
+S	sesison
+T	tranport
+N	network
+D 	data link 
+P 	physical	
+	
+			How many logical ports in computer system
+			
+					65535 
+					
+					1 to 1024   reseve port ( 80 , 443, 22 , 21, 25)
+	
+					1025 to  65535  ==>  Antivirus 
+					
+			Medium of communication
+					
+					wired
+					wireless
+					
