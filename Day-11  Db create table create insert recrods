@@ -1,0 +1,93 @@
+https://www.youtube.com/live/uzb3nJyKr4Q
+
+
+
+mariadb-server   / mysql 
+
+	dnf install mariadb-server mariadb
+	
+	systemctl  restart mariadb
+	
+	systemctl  enable mariadb
+	
+	1)  configure mariadb 
+	
+			mysql_secure_installation
+	
+	2)  now try to login with user  root
+			
+			mysql  -u root -p
+		
+	3)  How to show all databases  ?
+	
+			show databases ;
+			
+	4)  How to create new database  ?
+
+			create database mycollege ;
+			
+	5)   Again list all the current databse names 
+	
+				Repeat step-3
+				
+				show databases ;
+	
+	6)  Now enter / select / choose the database so that we can create tables
+	
+				use   mycollege;
+				
+	7)  List out all the tables in selected DB
+	
+				 show tables ;
+				 
+	8)  Create a table for student 
+				
+				sid				int(10)
+				stdname			varchar(255)
+				fname			varchar(255)
+				class			varchar(255)
+				mobile			varchar(255)
+				email			varchar(255)
+				
+	create table std (sid int(10), stdname varchar(255), fname varchar(255), class varchar(255), mobile varchar(10), email varchar(255) );
+	
+	
+	9)  If want to check the details of any mysql table, we can use :
+	
+			desc  std ;
+
+	10)  how can we can get data / rows from a table
+	
+			select *  from std ;
+			
+	11)  Now insert data into the table 
+insert into std set sid = 101, stdname = 'Ekamjeet Singh' ,fname= 'Maninder Singh' , class = '7th' , mobile = '989878779' , email = 'cdtsbikaner@gmail.com' ;
+
+insert into std set sid = '102', stdname = 'Harman Singh' ,fname= 'Maninder Singh' , class = '2nd' , mobile = '9898989' , email = 'harman@gmail.com' ;
+
+insert into std set sid = '103', stdname = 'Ravi Singh' ,fname= 'Harender Singh' , class = '9th' , mobile = '9878686779' , email = 'ravi@gmail.com' ;
+	
+	12) Now fetch database table 
+	
+			select *  from std ;
+			
+	
+	13)  Now delete all data 
+	
+				delete  from std ;
+				
+			Specific row delete 
+			
+					delete * from std where sid = 101 ;
+					
+					
+	14)  Now delete Database
+				
+			Switch to another DB and try to delete last one 	
+				
+			 drop database ecbbca ;
+			 
+			 show databases ;
+
+
+====================================================================
