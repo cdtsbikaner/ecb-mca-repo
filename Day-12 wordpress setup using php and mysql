@@ -1,0 +1,176 @@
+You tube video link part-1  --->  https://youtube.com/live/uzb3nJyKr4Q?feature=share
+
+You tube video link part-2  ---->  https://youtube.com/live/FwJfQwDNFbY?feature=share
+
+===========================
+Mariadb  sample db create 
+
+centos download wordpress 
+
+web-hosting 
+
+============================
+
+Worspress =  Dynamic webssite , cms ( content management system )
+			 
+			 
+			 
+		1)  apache webserver  (service provide on port number http://  (80) and https:// (443) )
+			 
+			 dnf install httpd
+			 
+						+
+					php 8.0 / 8.1
+				
+	dnf  install php  php-cli php-common php-fpm php-mysqlnd php-xml  -y
+
+	
+					
+			 2)   mariadb-server  
+			
+			
+============================			 
+			
+			
+How we can setup / host a simple html / php website in apache webserver?
+
+	1) 	dnf install httpd  -y
+	
+	2)  systemctl restartstart httpd 
+	
+	3)  systemctl  enable httpd 
+	
+	4) Now go to the Default hosting location at /var/www/html
+			
+			cd  /var/www/html 
+			
+	4.1)   Make sure that you have already installed php package !
+
+		dnf  install php  php-cli php-common php-fpm php-mysqlnd php-xml  -y
+		
+	4.2)   Restart webserver 
+	
+			systemctl restart httpd  
+			
+	5)  Now go to /var/www/html  
+			and  
+	create a testing php file with some basic code of php
+	
+				vim  index.php
+				
+					echo "hello world"
+					echo  phpinfo();
+					
+	
+	6)  Go to you windows browser and type IP of virtual machine 
+	
+			http://172.20.10.7
+			
+			
+	7)   If we want to print any error coming on php page then we need enable error logs for php page 
+	
+			vim /etc/php.ini
+			
+			 Find  -->   /error
+			 
+			 display_errors = Off  
+					|
+					|
+					|
+				display_errors = On
+				
+	Also remove ; (semicolon) from below block in php.ini
+		( Niche diye gaye code ke samne se semicolon ko hatana hai _
+
+ error_reporting
+   Default Value: E_ALL
+   Development Value: E_ALL
+   Production Value: E_ALL & ~E_DEPRECATED & ~E_STRICT
+
+	
+	Save and exit from vim  
+	
+
+				
+				
+	7.1)  apache web server restart 
+
+			systemctl  restart httpd 
+					
+					OR
+					
+			systemctl  reload httpd 
+			
+			
+	7.2)  Now test php page throwning error or not  !
+	
+	
+				http://172.20.10.7
+	
+	8)  Now login into mysql and create any dummy database 
+	
+			mysql -u root -p
+			
+			show databases ;
+			
+			create database  myecb ;
+			
+	Now exit from mysql 
+	
+	
+	9)  Download wordpress from internet
+
+			and then upload via Mobaxtream 
+			
+			ls -l  /root/
+
+			cp  /root/wordpress-7.0.zip   /var/www/html/
+			
+			
+			cd  /var/www/html
+			
+			
+	10)  mysql -u root -p
+	
+			create database myecbcollege ;
+			
+			use mysql ;
+			
+			show tables ;
+			
+			SELECT user,host,plugin FROM mysql.user;
+
+			
+			
+CREATE USER 'ekam'@'localhost' IDENTIFIED BY 'India123';
+
+GRANT ALL PRIVILEGES ON myecbcollege.* TO 'ekam'@'localhost';
+
+FLUSH PRIVILEGES;
+
+EXIT;
+
+
+	11)  Now ccess location of wordpress
+				
+				http://IP/wordpress/
+			
+			
+	12)  Sir facing issue while installing wp pages / config files
+	
+		12.1)  cd /var/www/html/wordpress/
+		
+		12.2)  cp  wp-config-sample.php   wp-config.php
+		
+		12.3)  Paste copied data from webpage and paster under wp-config.php
+		
+			( Remember please remove all existing lines of wp-config.php and then paste)
+			
+		12.4)  Now refresh web page and test wheather wordpress running
+		
+				http://IP/wordpress/
+				
+				
+		12.5)  now complete last step for wordpress user and password who will manage website content of wordpress.
+		
+	=====================================================================================
