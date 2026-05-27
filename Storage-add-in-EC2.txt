@@ -1,0 +1,96 @@
+Storage in AWS :
+================
+
+1)  EBS Volume ( Elastic Block Storage )
+
+2)  S3 Bukcet 
+
+3)  EFS Storage 
+
+4)  S3 Glacier 
+
+5) Instance Storage (Ephemeral Storage) (SSD disk) EBS 
+
+
+===============================================================
+1) EBS Volume 
+==========
+
+ - Provides raw block-level storage volumes for EC2 instances
+ - Works like a virtual hard drive
+
+Ideal for:
+ - Databases (MySQL, PostgreSQL)
+ - Operating systems
+ - Applications requiring low latency
+
+Types:
+ 
+ - SSD (fast performance – gp3, io1/io2)
+ - HDD (throughput optimized – st1, sc1)
+=============================================
+
+1)	fdisk -l
+		list all the mount devices ( HDD / SSD) + partition names 
+		
+2) 	lsblk  =>  Detect wheather a new storage added to ec2 instance 
+	
+3)   Now create 2 GB storage and attach with my instance
+	( Remeber to create new volume as per current AZ and also try to remember instance id )
+	
+4) Now attach with running instance
+
+5)  go to linux machine and type following command
+
+		lsblk 
+	
+6)  Need to format new partition
+
+ ( Note down hard disk identifier from fdisk -l command )
+ 
+ parted /dev/xvda
+
+  print 
+  
+  quit
+  
+  Now Format newly created partition ( 2 GB )
+  
+	 mkfs.xfs  /dev/xvdb
+
+ 7) cross check 
+ 
+		fdisk -l 
+		
+		lsblk
+		
+		parted  /dev/xvdb 
+		
+8)  Parment Mount point  (  Also work after reboot your server )
+
+		/dev/xvdb   ====>   /ecb
+		
+		Mount point =>  Temp, Permanent
+		
+			a) Temp Mount point :
+				mount /dev/xvdb  /ecb/
+				
+			b)  Permanent  mount point (After reboot it will avail)
+vim  /etc/fstab 
+		
+/dev/xvdb       /ecb     xfs    defaults,noatime        0       0
+
+Save and Exit
+
+9)	Now we added some lines in /etc/fstab so need to reload it !
+
+		mount -a 
+
+			
+10)  Cross Test wheather file system mounted or not ?
+	
+			df  -hT 
+==================================================================
+		
+		
+ 
