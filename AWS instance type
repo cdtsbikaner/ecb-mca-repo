@@ -1,0 +1,16 @@
+cloud instance family type :
+============================
+General Purpose 
+Compute Optimized
+Memory Optimized
+Accelerated Computing
+Storage Optimized 
+
+how can we launch instance ?
+==============================
+		1 on-demand
+		2 spot instance
+				spot fleet 
+		3 reserve instance 
+		
+==================================
