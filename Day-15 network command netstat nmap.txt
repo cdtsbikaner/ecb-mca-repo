@@ -1,0 +1,57 @@
+
+1.  netstat  ->  OWN / SELF Server port scanner 
+
+2.  nmap     -> Remote port scan 
+
+3.  host
+
+4.  dig	
+			+short
+			+trace 
+	Note:  see recording for more details
+
+5.  nslookup
+
+
+===================================================
+6.  arp
+
+7.   ifconfig
+     ip addr
+     ip route 
+
+8.   /etc/resolv.conf
+  
+===================================================
+
+	65535   Logical ports
+
+		1- 1023  Port managed (reserved port) 
+			80  -> http
+			443  -> https
+			20/21 ->  FTP 
+			22    ->  ssh
+			25   -> SMTP (simple mail transfer protocol)
+			143,110  -> pop , imap 
+		
+			MTA  =>  Mail transfer agent  (Gmail , ymail )
+			MDA => Mail deliver agent (Postman) 
+
+
+
+		1024 to 65535  unreserve port   (Antivirus) 
+
+							WORM
+							VIRUS
+							TROJEN HORSE
+	cat  /etc/services
+
+
+
+	How to check logs of web server 
+
+		tail -f  /var/log/httpd/access_log
+
+
+
+
