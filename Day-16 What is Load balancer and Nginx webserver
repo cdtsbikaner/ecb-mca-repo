@@ -1,0 +1,241 @@
+What is Load Balancer ?
+=========================
+A Load Balancer is a service or software that distributes incoming network traffic across multiple servers so that no single server becomes overloaded.
+
+Why do we need a Load Balancer?
+===================================
+Imagine you have a website hosted on one server:
+
+		Users request to website ---> Server-1
+		
+		
+If 10,000 users visit at the same time, Server-1 may become slow or crash.
+
+
+              +----------+
+Users ------> | Load     |
+              | Balancer |
+              +----------+
+                /   |   \
+               /    |    \
+         Server1 Server2 Server3
+		 
+		 
+The load balancer receives all requests and forwards them to available servers.		 
+	
+
+Common Load Balancing Algorithms
+=================================
+1. Round Robin
+---------------
+Requests are distributed one by one.
+
+Req1 → Server1
+Req2 → Server2
+Req3 → Server3
+Req4 → Server1
+
+Most commonly used.
+
+
+
+2. Least Connections
+--------------------
+
+Traffic goes to the server with the fewest active connections.
+
+Server1 = 100 connections
+Server2 = 20 connections
+
+Next request → Server2
+
+
+3. Weighted Round Robin
+------------------------
+More powerful servers receive more requests.
+
+Example:
+
+Server1 Weight = 5
+Server2 Weight = 2
+Server3 Weight = 1
+
+Server1 gets the majority of traffic.
+
+
+Types of Load Balancers
+=========================
+Layer 4 Load Balancer (Transport Layer)
+
+Works with:
+
+	TCP
+	UDP
+
+Looks only at IP addresses and ports.
+
+Example:
+
+Client ---> Load Balancer ---> Web Servers
+
+Fast but less intelligent.
+
+
+
+Layer 7 Load Balancer (Application Layer)
+=========================================
+Works with:
+
+HTTP
+HTTPS
+
+Can make decisions based on:
+
+URL
+Hostname
+Headers
+Cookies
+
+Example:
+
+/api/*      → API Servers
+/images/*   → Image Servers
+
+
+
+Static Load Balancing Algorithms
+================================
+	Round Robin
+	
+	Weighted 
+	
+	IP hash
+	
+Dynamic Load Balancer algo
+==========================
+	Least Connection 
+	
+	Weigheted Least connection
+	
+	Least repsonse time
+	
+	Resource Based ( CPU / RAM / Network / HDD )
+	
+==================================================
+Server name which perform load balacing :
+
+Open source
+------------
+	1)   Nginx
+	
+	2)   HAProxy
+======================	
+Vendor end ( Amazon )
+
+	3)  ALB  ,  NLB , Gateway Load Balancer 
+======================
+
+
+NGINX: NGINX (pronounced "Engine-X") is a high-performance web server, reverse proxy server, load balancer, and HTTP cache.
+
+It is one of the most widely used web servers in the world and is used by companies such as Netflix, Airbnb, and Cloudflare.
+
+What Does NGINX Do?
+===================
+
+		1. Web Server
+				When it added module php-fpm then it will server wp.
+					( Wordpress =  webserver + Php + Mariadb )
+					
+		2. Load Balancer
+
+			NGINX can distribute traffic across multiple servers.
+			
+					   NGINX
+						 |
+				  +------+------+ 
+				  |      |      |
+				Web1   Web2   Web3				
+						
+	
+		
+		3. Reverse Proxy  NGINX sits in front of application servers and forwards requests to them.
+					Client
+					   |
+					   v
+					 NGINX
+					   |
+					   +--> App Server 1
+					   +--> App Server 2		
+		
+Example:
+
+	Client --> NGINX --> Node.js Application		
+		
+	Proxy :  
+				1)  Forward 
+				2)  Reverse Proxy 
+
+
+		4. Caching
+				
+		NGINX can store frequently requested content and serve it directly.
+
+			Client Request
+				  |
+			   NGINX Cache
+				  |
+			  Cached Response
+				
+		Result:
+
+			Faster websites
+			Lower backend load			
+				
+NGINX Architecture
+==================
+Unlike traditional web servers that create one process per connection, NGINX uses an event-driven architecture.				
+				
+	           Master Process
+                  |
+        +---------+---------+
+        |         |         |
+     Worker1   Worker2   Worker3
+	 
+	 
+Advantages:
+
+	Low memory usage
+	Handles thousands of connections
+	High performance
+	
+	
+How to install NGnigx on linux
+=================================
+
+RHEL / CentOS / Rocky Linux / AlmaLinux
+
+1)  dnf install nginx -y
+
+
+2)   systemctl start nginx
+
+3) systemctl enable nginx
+
+4)  systemctl status nginx
+
+
+===========================================================
+Session  -->   Server side ( Apache / Tomcat / Nginx )
+			   Time out -> 60 second  							
+				
+			   Application server -> jsp/java/php/py
+						8080 
+																				Web server -> 80 / 443 
+										
+										
+										
+Cookies  -->  Client side (Browser end)
+				365 days 
+
+
