@@ -1,0 +1,129 @@
+Docker:  					
+=======
+Docker is an open-source containerization platform that allows you to package an application along with all its dependencies (libraries, runtime, configuration files, etc.) into a container.
+
+A container can run consistently on any system that has Docker installed.
+
+Why Docker Was Created
+=======================
+
+Before Docker, applications often worked on one machine but failed on another because of differences in:
+
+	Operating System
+	Library versions
+	Runtime versions
+	Environment variables
+	
+Example:
+
+Developer Laptop
+     |
+     | Works Fine
+     v
+Production Server
+     |
+     | Error: Java/Python/Node version mismatch
+     v
+Application Fails
+
+
+
+Note:   Docker solves this by packaging everything together.
+===================================================
+
+What is a Container?
+
+A container is a lightweight, isolated environment that contains:
+
+	Application code
+	Runtime
+	Libraries
+	Dependencies
+	Configuration files
+
+
++----------------------+
+| Docker Container     |
+|----------------------|
+| Application          |
+| Libraries            |
+| Dependencies         |
+| Runtime              |
++----------------------+
+
+
+Docker vs Virtual Machine
+==========================
+1) Virtual Machine (VM)
+-----------------------
+
+Physical Server
+      |
+ Hypervisor
+   /      \
+ VM1      VM2
+(OS)      (OS)
+
+
+Each VM has its own operating system.
+
+Disadvantages:
+
+	Heavy
+	Uses more RAM
+	Slow startup
+	
+	
+2)  Docker Containers
+-----------------------
+
+Physical Server
+      |
+ Host OS
+      |
+ Docker Engine
+   /    |    \
+ C1    C2    C3
+ 
+ 
+ Containers share the host OS kernel.
+ 
+ 
+ Advantages:
+
+		Lightweight
+		Fast startup
+		Less memory usage
+		Easy deployment
+		
+======================================
+
+1)  How to install docker ?
+
+      dnf install docker -y 
+
+2)   how to start and enable services of docker 
+
+  systemctl  start docker 
+  systemctl enable docker 
+
+3)   How to pull any docker image from Docker hub  ?
+
+    docker pull  ubuntu
+
+4)   see all pulled docker images 
+
+    docker images 
+
+5)   now create container from above docker image
+
+    docker run  --name c1  -dit   <DOCKER-IMAGE-ID>   
+
+6)  cross check docker container running or not
+
+    docker ps -a 
+
+7)   how to kill / delete docker container  ?
+
+    docker rm -f <CONTAINER-ID/NAME>  
+===============================xxxxxxxxxxxxxxxxxxx====================================
