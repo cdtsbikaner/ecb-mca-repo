@@ -1,0 +1,125 @@
+Step-1  Docker install 
+		
+Step-2   make sure services of docker running
+
+	systemctl status docker 
+	
+If down then start it !
+
+Step-3  Now pull docker image of CDTS Bikaner (dockerhub) account :
+     ( Just run this command on docker host )
+
+docker pull cdtsbikaner/mynewrepodevops2025:nginxweb-v1.0
+
+
+Step-4  check docker imaged pulled or not  ?
+
+		docker images 
+		
+Step-5   Now create any 4 containers from this pulled images 
+
+	docker run --name c1  -dit -P <IMAGE-ID>
+	
+	-d  Detach mode
+	-i intractive mode
+	-t termianl mode
+	
+Note:   Ese 4 containers run kar dena 	
+	
+Step-5.1 Get the ip addresses of all running containers
+
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' c1
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' c2
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' c3
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' c4
+
+
+Step-6 List of the running containers 
+		
+			docker ps -a 
+			
+Step-7  Go to aws console select ec2 instance  and go inside the security group in bottom 
+
+			open all traffic of ports    32000-35000  for everywhere 
+			
+Step-8  Now again login on Ec2 instance and try to install nginx 
+
+			dnf install nginx -y
+			
+Step-9  Start , enable and check status of nginx 
+
+		systemctl start nginx
+		systemctl enable nginx 
+		systemctl status nginx 
+
+Step-10   Now  go inside the /etc/nginx/conf.d/
+
+and create new file named as  ecblb.conf and put following code inside it 
+( Please remember to change below IP according to your containers )
+
+
+
+upstream backend_ecbserver {            #  This perform load balancing
+    server 172.17.0.2:80;
+    server 172.17.0.3:80;
+    server 172.17.0.4:80;
+    server 172.17.0.5:80;
+}
+
+server {
+    listen 80;
+    server_name _;
+
+    location / {
+        proxy_pass http://backend_ecbserver;    # This perform reverse proxy
+
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+
+
+Step-11  Now need to comment some lines of  
+			
+			/etc/nginx/nginx.conf ( Default file )
+
+
+
+        #listen       80;
+        #listen       [::]:80;
+        #server_name  _;
+        #root         /usr/share/nginx/html;
+		
+Step-12 Now restart the services of nginx  
+
+	systemctl  restart  nginx 
+	
+Step-13  Verify the IP of base machine 
+
+			http://PUBLIC-IP
+			
+Step-14 How will you test Load Balancer and Reverse Proxy ?
+
+	Go inside the each container and change the index.html content 
+	
+How to login in container c1 :
+	
+	docker exec -ti c1  bash
+
+How to change content of index.html
+
+	echo "Hi i am from container-1"   >  index.html\
+	
+Note:  Do this practice for all the remaining containers ( c2, c3, c4)
+
+
+Step-15  Now finishing the task and test LB and Reverse Proxy 
+
+		http://IP  
+		
+	Note: Automatically it will forward the traffic on Containers of backend.
+	
+===============================================================================
