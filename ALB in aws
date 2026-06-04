@@ -1,0 +1,28 @@
+
+Step-1  Create 2 EC2 instance  and make sure that both machine running under the same security Group ( Firewall )
+			
+		If you first EC2 instance running -> launch-wizard-1 
+		then second machine must select above security group.
+		
+	Note:  open port number 80 inboud rule of security group 
+						
+Step-2  Install apache and Nginx seperately on each machine
+
+			server1  -  nginx
+			server2  -  apache (httpd)
+			
+		Note:  test each node before create any TG
+			
+Step-3  Create Target Group
+			( port number 80 )
+
+Step-4  Create Application Load Balancer  ( https, http )
+			
+Step-5  Wait for some time or you can check on Domain propagation
+		for test
+		
+Step-6  once you create LB you can cross check on browser
+		
+			https://www.whatsmydns.net/
+=================================================================
+		
