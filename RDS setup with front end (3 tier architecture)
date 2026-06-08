@@ -1,0 +1,48 @@
+Achive this 3 tier architecture with front end and backend --> 
+https://vfunction.com/wp-content/uploads/2024/05/blog-3-tier-application.webp
+=================================================================
+
+
+Once you created RDS db just note down the username and password here :
+  ( Its my own password so dont use it )
+  
+admin
+sJDP5ryVQrAEfrQoWVqP
+
+Testing 
+========
+		dnf install telnet -y
+		
+telnet mydb1.cvw42c8eo77v.ap-south-1.rds.amazonaws.com 3306
+
+Netcutter /  netstat  (Is the service mysql available on 3306)
+=====================
+		dnf install nc -y
+		
+nc -zv mydb1.cvw42c8eo77v.ap-south-1.rds.amazonaws.com 3306
+
+How we can connect front end to back end 
+==========================================
+Pre-requisite:
+==============
+		dnf install mariabd105-server  -y
+		
+
+mysql -h mydb1.cvw42c8eo77v.ap-south-1.rds.amazonaws.com -u admin -p
+
+
+Create sameple database 
+=======================
+
+1)  create table std (sid int(10) , sname varchar(255), email varchar(255)) ;
+
+2)  desc std ;
+
+3)   insert into std set sid  =1101, sname ='Harish '  , email = 'harish@gmail.com' ;
+
+4)  select * from std  ;
+
+=========================
+NULL ->  Unaccupied / unavailable value  
+
+==================================================
